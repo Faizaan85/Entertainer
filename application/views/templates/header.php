@@ -11,7 +11,7 @@
 		<meta name="author" content="Faizaan VArteji">
 
 		<?php $var_defined = get_defined_vars(); ?>
-		
+
 
 		<script src="<?php echo base_url(); ?>assets/js/require/jquery-3.2.0.min.js"></script>
 
@@ -40,17 +40,17 @@
 		<link href="<?php echo base_url(); ?>assets/css/require/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/css/require/jquery-ui.min.css" rel="stylesheet" type="text/css">
 
-		
+
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/require/font-awesome.min.css" type="text/css">
 		<link rel="stylesheet" href=" <?php echo base_url(); ?>assets/css/require/bootstrap-select.min.css" type="text/css">
 		</head>
 		<style>
 		td.details-control {
-			background: url('../assets/css/icons8-plus-50.png') no-repeat center center;
+			background: url('./assets/css/icons8-plus-50.png') no-repeat center center;
 			cursor: pointer;
 		}
 		tr.shown td.details-control {
-			background: url('../assets/css/icons8-plus-50.png') no-repeat center center;
+			background: url('./assets/css/icons8-plus-50.png') no-repeat center center;
 		}
 		</style>
 	<body>

@@ -15,7 +15,7 @@ class Merchants extends CI_Controller{
 	$data = array();
 	$data['title'] = "Merchants List";
 	$data['jslist'] = array("list.js");
-
+	// $data['response'] = http_get("https://developers.zomato.com/api/v2.1/search?entity_id=51&count=1&q=fuddruckers", array("httpauth"=>"user-key:55399a5e2cb611edf80ce16f7484551d"), $info);
 	$this->load->view('templates/header',$data);
 	$this->load->view('views_merchants/list');
 	$this->load->view('templates/footer');
@@ -28,7 +28,7 @@ class Merchants extends CI_Controller{
   	$category = $this->input->get('category');
   	$limit = $this->input->get('count');
 
-  	$result = $this->merchants_model->get_merchants($year);
+  	$result = $this->merchants_model->get_merchants(array('year' => $year ,'name' => $name ,'category' => $category), $limit);
 
   	if(array_key_exists('code', $result))
   	{

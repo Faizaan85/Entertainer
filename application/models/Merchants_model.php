@@ -30,13 +30,19 @@ class Merchants_model extends CI_Model{
   	}
   	return $rec_nums;
   }
-  public function get_merchants($year, $name=0, $category=0, $limit=0, $offset = NULL)
+  //$year=2018, $name=0, $category=0, $limit=0, $offset = NULL
+  public function get_merchants($param_arr, $limit=0)
   {
-  	//$arr_criteria = condition_prep(array('year' => $year, 'category' => $category));
-  	$query = $this->db->get_where('merchants',array('year' => $year));
-  	
+  	$arr_criteria = $this->condition_prep($param_arr);
+	if($limit != 0)
+	{
+		$this->db->limit($limit);
+	}
+  	$query = $this->db->get_where('merchants',$arr_criteria);
+
+	// return $arr_criteria;
   	$result = $query->result_array();
-  	
+
   	if(isset($result))
   	{
   		return $result;
@@ -54,12 +60,12 @@ class Merchants_model extends CI_Model{
   	$return_arr = array();
   	foreach ($param_arr as $key => $value)
   	{
-  		if ($value == "ALL" or $value == "")
+  		if (is_null($value))
   		{
   			continue;
   		}
   		else
-  		{	
+  		{
   		  	$return_arr[$key] = $value;
   		}
   	}

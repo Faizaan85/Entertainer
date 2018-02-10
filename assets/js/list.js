@@ -1,4 +1,4 @@
-function format( d ) 
+function format( d )
 {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
@@ -27,10 +27,10 @@ $(document).ready(function()
 	{
 		ajax:
 		{
-			url: $base_url+'merchants/search?year=2018',
+			url: $base_url+'merchants/search?year=2018&category=food&count=20',
 			dataSrc:'data'
 		},
-		columns: 
+		columns:
 		[
 			{
                 "className":      'details-control',
@@ -52,7 +52,7 @@ $(document).ready(function()
 		]
 	});
 
-	$('#table_result').on('click', 'td.details-control', function () 
+	$('#table_result').on('click', 'td.details-control', function ()
 	{
         var tr = $(this).closest('tr');
         var row = table.row( tr );
@@ -91,9 +91,13 @@ $(document).ready(function()
             .always(function() {
             	console.log("complete");
             });
-            
+
         }
-    } );
+    });
+	$('#expand_all').on('click',function()
+	{
+		$('td.details-control').click();
+	});
 
 
 
@@ -130,7 +134,6 @@ $(document).ready(function()
 		.always(function() {
 			console.log("complete");
 		});
-		
+
 	});
 });
-
