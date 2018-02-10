@@ -14,7 +14,7 @@ class Merchants extends CI_Controller{
   {
 	$data = array();
 	$data['title'] = "Merchants List";
-	$data['jslist'] = array("merchants_list.js");
+	$data['jslist'] = array("list.js");
 
 	$this->load->view('templates/header',$data);
 	$this->load->view('views_merchants/list');
@@ -23,23 +23,35 @@ class Merchants extends CI_Controller{
 
   public function search()
   {
-	  $year = $this->check_null($this->input->get('year'),2018);
-	  $name = $this->check_null($this->input->get('name'), 'ALL');
-	  $category = $this->check_null($this->input->get('category'),'ALL');
-	  $result_count = $this->check_null($this->input->get('count'),'ALL');
-	   
+  	$year = $this->input->get('year');
+  	$name = $this->input->get('name');
+  	$category = $this->input->get('category');
+  	$limit = $this->input->get('count');
+
+  	$result = $this->merchants_model->get_merchants($year, $name, $category, $limit);
+
+  	if(array_key_exists('code', $result))
+  	{
+  		//error
+  		die(json_encode(array('message' => $result['message'], 'code'=>$result['code'])));
+  	}
+  	else
+  	{
+  		echo json_encode(array('data' => $result));
+  	}
+
   }
 
   private function check_null($var, $set)
   {
-	  if(is_null($var))
-	  {
-		  return $set;
-	  }
-	  else
-	  {
-	  	return $var;
-	  }
+  	if(is_null($var))
+  	{
+  		return $set;
+  	}
+  	else
+  	{
+  		return $var;
+  	}
   }
 
 }
