@@ -30,10 +30,10 @@ class Merchants_model extends CI_Model{
   	}
   	return $rec_nums;
   }
-  public function get_merchants($year, $name, $category, $limit, $offset = NULL)
+  public function get_merchants($year, $name=0, $category=0, $limit=0, $offset = NULL)
   {
-  	// $arr_criteria = array(array('year' => $year, 'name' => $name, 'category' => $category)));
-  	$query = $this->db->get_where('merchants',array('year' => $year, 'category' => $category));
+  	//$arr_criteria = condition_prep(array('year' => $year, 'category' => $category));
+  	$query = $this->db->get_where('merchants',array('year' => $year));
   	
   	$result = $query->result_array();
   	

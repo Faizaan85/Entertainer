@@ -27,7 +27,7 @@ $(document).ready(function()
 	{
 		ajax:
 		{
-			url: $base_url+'merchants/search?year=2018&category=food',
+			url: $base_url+'merchants/search?year=2018',
 			dataSrc:'data'
 		},
 		columns: 

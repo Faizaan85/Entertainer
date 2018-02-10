@@ -28,7 +28,7 @@ class Merchants extends CI_Controller{
   	$category = $this->input->get('category');
   	$limit = $this->input->get('count');
 
-  	$result = $this->merchants_model->get_merchants($year, $name, $category, $limit);
+  	$result = $this->merchants_model->get_merchants($year);
 
   	if(array_key_exists('code', $result))
   	{
